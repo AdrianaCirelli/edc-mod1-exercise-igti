@@ -33,7 +33,7 @@ def handler(event, context):
                     'Ec2KeyName': 'adri-igti-teste',
                     'KeepJobFlowAliveWhenNoSteps': True,
                     'TerminationProtected': False,
-                    'Ec2SubnetId': 'subnet-1df20360'
+                    'Ec2SubnetId': 'subnet-0d6d202db5155c127'
                 },
 
                 Applications=[
