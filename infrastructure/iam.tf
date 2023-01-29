@@ -156,7 +156,7 @@ resource "aws_iam_role" "glue_role" {
     {
       "Effect": "Allow",
       "Action": "iam:PassRole",
-      "Resource": "arn:aws:iam::${secrets.AWS_ACCOUNT_ID}:role/Get-pics"
+      "Resource": "arn:aws:iam::1540-0213-0031:role/Get-pics"
     }
 
   ]
