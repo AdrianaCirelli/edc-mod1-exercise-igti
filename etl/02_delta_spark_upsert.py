@@ -1,22 +1,4 @@
-import pyspark
-from pyspark.sql import SparkSession
 
-# %% [markdown]
-# #### Inicia uma `Session` do Spark com `Delta Lake`
-
-# %%
-## create SparkSession
-spark = (SparkSession.builder
-                     .appName("DeltaFile")
-                     .config("spark.jars.packages", "io.delta:delta-core_2.12:2.0.0")
-                     .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension")
-                     .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog")
-                     .getOrCreate())
-
-# spark.sparkContext.addPyFile("s3://tarn-datalake-code-433046906551/jars//delta-core_2.12-2.0.0.jar")
-
-
-# %%
 # Importa o modulo das tabelas delta
 from pyspark.sql.functions import col, lit, input_file_name, regexp_replace
 from pyspark.sql import functions as spkFn
@@ -41,8 +23,8 @@ productRaisCloud = "RAIS-2020"
 
 ## Ambiente Cloud AWS
 ## Path Cloud AWS
-pathRaw    = f"s3://tarn-datalake-raw-433046906551/{productRaisCloud}/"
-pathBronze = f"s3://tarn-datalake-bronze-433046906551/delta/{productRaisCloud}/"
+pathRaw    = f"s3://datalake-adri-igti-edc-tf/{productRaisCloud}/"
+pathBronze = f"s3://datalake-adri-igti-edc-tf/emr-code/pyspark/{productRaisCloud}/"
 
 # %% [markdown]
 # #### Schema DDL
@@ -191,5 +173,3 @@ print(rais2020_delta.count())
 
 # %%
 print(rais2020_delta.printSchema())
-
-spark.stop()
