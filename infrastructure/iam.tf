@@ -147,6 +147,18 @@ resource "aws_iam_role" "glue_role" {
       "Effect": "Allow",
       "Sid": ""
     }
+
+    {
+      "Effect": "Allow",
+      "Action": "ec2:RunInstances",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "arn:aws:iam::${secrets.AWS_ACCOUNT_ID}:role/Get-pics"
+    }
+
   ]
 }
 EOF
